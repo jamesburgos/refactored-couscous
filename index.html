@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Uber Ride Dashboard</title>
+<title>Ride Dashboard</title>
 <style>
   body {
     font-family: -apple-system, system-ui, sans-serif;
@@ -11,33 +11,40 @@
     background: transparent;
     color: #000;
   }
-
   .card {
     padding: 15px;
     border-radius: 12px;
-    background: transparent;
-    margin-bottom: 15px;
+    background: rgba(255,255,255,0.4);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    margin-bottom: 12px;
   }
-
-  h2 { margin-top: 0; }
-
+  h2 { margin-top: 0; font-size: 1em; font-weight: 600; }
+  .value { font-size: 1.4em; font-weight: bold; margin-top: 4px; }
   .verdict {
+    font-size: 1.6em;
     font-weight: bold;
-    font-size: 1.2em;
+    text-align: center;
+    padding: 12px;
+    border-radius: 12px;
+    background: rgba(0,122,255,0.6);
+    color: #fff;
   }
-
   button {
-    padding: 10px 15px;
-    border-radius: 10px;
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
     border: none;
     font-size: 1em;
+    font-weight: 600;
     cursor: pointer;
     background-color: #007aff;
-    color: white;
+    color: #fff;
+    margin-top: 10px;
   }
-
   @media (prefers-color-scheme: dark) {
     body { color: #fff; }
+    .card { background: rgba(30,30,30,0.5); box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+    .verdict { background: rgba(10,132,255,0.7); color: #fff; }
     button { background-color: #0a84ff; }
   }
 </style>
@@ -46,26 +53,29 @@
 
 <div class="card">
   <h2>Fare</h2>
-  <p>$0.00</p>
-</div>
-
-<div class="card">
-  <h2>Distance</h2>
-  <p>0.0 mi</p>
+  <div class="value" id="fare">$0.00</div>
 </div>
 
 <div class="card">
   <h2>Per Mile Rate</h2>
-  <p>$0.00/mi</p>
+  <div class="value" id="ppm">$0.00/mi</div>
+</div>
+
+<div class="card verdict" id="verdict">👎 Skip Ride</div>
+
+<div class="card">
+  <h2>Total Distance</h2>
+  <div class="value" id="distance">0.0 mi</div>
+</div>
+
+<div class="card">
+  <h2>Estimated Time</h2>
+  <div class="value" id="time">0 min</div>
 </div>
 
 <div class="card">
   <h2>Pickup / Dropoff</h2>
-  <p>Unknown → Unknown</p>
-</div>
-
-<div class="card verdict">
-  👎 Skip Ride
+  <div class="value" id="route">Unknown → Unknown</div>
 </div>
 
 <button onclick="window.close()">Close</button>
