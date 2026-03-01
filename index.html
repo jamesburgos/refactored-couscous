@@ -1,0 +1,61 @@
+// Uber Ride Dashboard – Scriptable
+// Generates local HTML for full-screen glass UI
+
+// 1️⃣ HTML content (placeholder)
+let html = `
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body {
+    font-family: -apple-system, system-ui, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: rgba(255,255,255,0.35);
+    backdrop-filter: blur(30px);
+  }
+
+  .card {
+    padding: 15px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.55);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    margin-bottom: 15px;
+    color: #000;
+  }
+
+  .verdict {
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h2>Fare</h2>
+    <p>$12.50</p>
+  </div>
+  <div class="card">
+    <h2>Distance</h2>
+    <p>8.2 mi</p>
+  </div>
+  <div class="card">
+    <h2>Per Mile Rate</h2>
+    <p>$1.52/mi</p>
+  </div>
+  <div class="card verdict">
+    👍 Accept Ride
+  </div>
+</body>
+</html>
+`;
+
+// 2️⃣ Write HTML to local file
+const fm = FileManager.local();
+const path = fm.joinPath(fm.documentsDirectory(), "uber_dashboard.html");
+fm.writeString(path, html);
+
+// 3️⃣ Output the file path for Shortcuts
+Script.setShortcutOutput("file://" + path);
+Script.complete();
