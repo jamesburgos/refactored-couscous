@@ -4,24 +4,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Uber Ride Dashboard</title>
 <style>
-  /* Use system font stack */
   body {
     font-family: -apple-system, system-ui, sans-serif;
     margin: 0;
     padding: 20px;
-    backdrop-filter: blur(30px);
-    background: rgba(255,255,255,0.35); /* fallback for light mode */
-    transition: background 0.3s, color 0.3s;
+    background: transparent;
+    color: #000;
   }
 
-  /* Cards styling */
   .card {
     padding: 15px;
     border-radius: 12px;
-    background: rgba(255,255,255,0.5);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    background: transparent;
     margin-bottom: 15px;
-    color: #000;
   }
 
   h2 { margin-top: 0; }
@@ -41,20 +36,9 @@
     color: white;
   }
 
-  /* Dark mode adjustments */
   @media (prefers-color-scheme: dark) {
-    body {
-      background: rgba(0,0,0,0.35);
-    }
-    .card {
-      background: rgba(30,30,30,0.55);
-      color: #fff;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.6);
-    }
-    button {
-      background-color: #0a84ff;
-      color: white;
-    }
+    body { color: #fff; }
+    button { background-color: #0a84ff; }
   }
 </style>
 </head>
