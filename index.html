@@ -1,61 +1,90 @@
-// Uber Ride Dashboard – Scriptable
-// Generates local HTML for full-screen glass UI
-
-// 1️⃣ HTML content (placeholder)
-let html = `
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uber Ride Dashboard</title>
 <style>
+  /* Use system font stack */
   body {
     font-family: -apple-system, system-ui, sans-serif;
     margin: 0;
     padding: 20px;
-    background: rgba(255,255,255,0.35);
     backdrop-filter: blur(30px);
+    background: rgba(255,255,255,0.35); /* fallback for light mode */
+    transition: background 0.3s, color 0.3s;
   }
 
+  /* Cards styling */
   .card {
     padding: 15px;
     border-radius: 12px;
-    background: rgba(255,255,255,0.55);
+    background: rgba(255,255,255,0.5);
     box-shadow: 0 4px 8px rgba(0,0,0,0.15);
     margin-bottom: 15px;
     color: #000;
   }
 
+  h2 { margin-top: 0; }
+
   .verdict {
     font-weight: bold;
     font-size: 1.2em;
   }
+
+  button {
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #007aff;
+    color: white;
+  }
+
+  /* Dark mode adjustments */
+  @media (prefers-color-scheme: dark) {
+    body {
+      background: rgba(0,0,0,0.35);
+    }
+    .card {
+      background: rgba(30,30,30,0.55);
+      color: #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+    }
+    button {
+      background-color: #0a84ff;
+      color: white;
+    }
+  }
 </style>
 </head>
 <body>
-  <div class="card">
-    <h2>Fare</h2>
-    <p>$12.50</p>
-  </div>
-  <div class="card">
-    <h2>Distance</h2>
-    <p>8.2 mi</p>
-  </div>
-  <div class="card">
-    <h2>Per Mile Rate</h2>
-    <p>$1.52/mi</p>
-  </div>
-  <div class="card verdict">
-    👍 Accept Ride
-  </div>
+
+<div class="card">
+  <h2>Fare</h2>
+  <p>$0.00</p>
+</div>
+
+<div class="card">
+  <h2>Distance</h2>
+  <p>0.0 mi</p>
+</div>
+
+<div class="card">
+  <h2>Per Mile Rate</h2>
+  <p>$0.00/mi</p>
+</div>
+
+<div class="card">
+  <h2>Pickup / Dropoff</h2>
+  <p>Unknown → Unknown</p>
+</div>
+
+<div class="card verdict">
+  👎 Skip Ride
+</div>
+
+<button onclick="window.close()">Close</button>
+
 </body>
 </html>
-`;
-
-// 2️⃣ Write HTML to local file
-const fm = FileManager.local();
-const path = fm.joinPath(fm.documentsDirectory(), "uber_dashboard.html");
-fm.writeString(path, html);
-
-// 3️⃣ Output the file path for Shortcuts
-Script.setShortcutOutput("file://" + path);
-Script.complete();
